@@ -1,0 +1,30 @@
+.countryDetails {
+  display: flex;
+  justify-content: center;
+  margin: auto 0;
+}
+.countryDetails__flag {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+.countryDetails__description {
+  margin-left: 50px;
+}
+.countryDetails__description-name {
+  margin: 10px 0;
+}
+
+.countryDetails__description-info {
+  margin: 5px 0;
+}
+.countryDetails__descritpion-criteria {
+  font-weight: bold;
+}
+
+.countryDetails__description-container {
+  display: flex;
+}
+.countryDetails__description-column2 {
+  margin-left: 50px;
+}

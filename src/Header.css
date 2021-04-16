@@ -1,0 +1,22 @@
+.header {
+  height: 60px;
+  display: flex;
+  border-bottom: 1px solid lightgray;
+}
+
+.header__brand {
+  margin: auto 0;
+  margin-left: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.header__theme {
+  display: flex;
+  margin: auto 20px auto auto;
+  cursor: pointer;
+}
+.header__icon {
+  margin-top: 2px;
+  margin-right: 5px;
+}

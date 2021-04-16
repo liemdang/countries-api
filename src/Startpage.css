@@ -1,0 +1,24 @@
+.startpage__searchcontainer {
+  display: flex;
+}
+.startpage__searchcontainer-filter {
+  margin-left: auto;
+}
+.overview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.startpage__searchcontainer-searchbar {
+  display: flex;
+  height: 40px;
+}
+.startpage__searchcontainer-searchIcon {
+  height: 100% !important;
+}
+
+.startpage__searchcontainer-searchInput {
+  border: none;
+  box-shadow: 5px 10px 8px 10px #888888;
+  border-radius: 4px;
+}
