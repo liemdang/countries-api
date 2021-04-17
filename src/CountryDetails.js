@@ -18,6 +18,7 @@ const CountryDetails = (props) => {
         </Link>
         
         {country &&
+        <div className="countryDetails__container">
         <div className="countryDetails">
             <img className="countryDetails__flag" src={country.flag} alt={country.name} />
             <div className="countryDetails__description">
@@ -55,6 +56,7 @@ const CountryDetails = (props) => {
                 </div>
             </div>
 
+        </div>
         </div>
     }
         </div>

@@ -1,3 +1,9 @@
+.countryDetails__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  /* align-content: center; */
+}
 .countryDetails {
   display: flex;
   justify-content: center;
@@ -7,6 +13,7 @@
   width: 400px;
   height: 300px;
   object-fit: cover;
+  object-position: center;
 }
 .countryDetails__description {
   margin-left: 50px;

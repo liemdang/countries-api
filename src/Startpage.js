@@ -54,11 +54,14 @@ const Overview = () => {
        } else if(regionCountries.length > 0) {
            
            countries = regionCountries
-       }else {
+       }  else if(inputEmpty === false && regionCountries.length === 0) {
            countries = searchedCountries
+       } else {
+           countries = data
        }
         return (
-            <div>   
+            <div className="all">
+            <div className="startpage">   
                 <div className="startpage__searchcontainer">
                     <div className="startpage__searchcontainer-searchbar">
                         <AiOutlineSearch className="startpage__searchcontainer-searchIcon"/>
@@ -66,7 +69,7 @@ const Overview = () => {
                     </div>
                     
                     <select className="startpage__searchcontainer-filter" name="region"  onChange={test}>
-                    <option value="">All</option>
+                    <option className="liem" value="">All</option>
                     <option value="Africa">Africa</option>
                     <option value="Americas">America</option>
                     <option value="Asia">Asia</option>
@@ -87,6 +90,7 @@ const Overview = () => {
                     ))}
                     
                 </div>
+            </div>
             </div>
         )
     }
