@@ -7,27 +7,27 @@
   height: 320px;
   width: 264px;
   text-align: start;
-  box-shadow: 3px 3px 3px lightgray;
-  background-color: white;
-  border-radius: 8px;
+  box-shadow: 3px 3px 3px var(--shadow-color);
+  background-color: var(--el-color);
+  border-radius: 4px;
   text-decoration: none;
-  color: black;
+  color: var(--font-color);
 }
 
 .card > img {
   height: 160px;
   width: 264px;
   object-fit: cover;
-  border-radius: 8px 8px 0 0;
+  border-radius: 4px 4px 0 0;
 }
 
 .card__shortInfo {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .card__shortInfo > h3 {
   margin: 10px 0;
 }
 
 .card__shortInfo-criteria {
-  font-weight: bold;
+  font-weight: 600;
 }

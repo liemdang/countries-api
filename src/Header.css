@@ -1,19 +1,21 @@
 .header {
   height: 60px;
   display: flex;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--shadow-color);
+  background-color: var(--el-color);
+  color: var(--font-color);
 }
 
 .header__brand {
   margin: auto 0;
-  margin-left: 20px;
+  margin-left: 60px;
   text-decoration: none;
-  color: black;
+  color: var(--font-color);
 }
 
 .header__theme {
   display: flex;
-  margin: auto 20px auto auto;
+  margin: auto 80px auto auto;
   cursor: pointer;
 }
 .header__icon {

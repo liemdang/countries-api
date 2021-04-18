@@ -1,5 +1,16 @@
+/* :root {
+  --font-color: hsl(200, 15%, 8%);
+  --bg-color: hsl(0, 0%, 98%);
+  --el-color: hsl(0, 0%, 98%);
+}
+
+.dark-theme {
+  --font-color: hsl(0, 0%, 100%);
+  --bg-color: hsl(207, 26%, 17%);
+  --el-color: hsl(209, 23%, 22%);
+} */
 .all {
-  background-color: hsl(0, 0%, 98%);
+  background-color: var(--bg-color);
 }
 .startpage {
   height: 100vh;
@@ -13,11 +24,13 @@
   margin-top: 20px;
 }
 .startpage__searchcontainer-filter {
+  background-color: var(--el-color);
+  color: var(--font-color);
   border: none;
   margin-left: auto;
   margin-right: 60px;
   outline: none;
-  box-shadow: 3px 3px 3px lightgray;
+  box-shadow: 3px 3px 3px var(--shadow-color);
   width: 200px;
   border-radius: 4px;
   padding-left: 30px;
@@ -29,21 +42,24 @@
   justify-content: center;
 }
 .startpage__searchcontainer-searchbar {
-  background-color: white;
+  background-color: var(--el-color);
+  color: var(--font-color);
   display: flex;
   height: 50px;
   min-width: 550px;
   margin-left: 60px;
-  box-shadow: 3px 3px 3px lightgray;
+  box-shadow: 3px 3px 3px var(--shadow-color);
   border-radius: 4px;
 }
 .startpage__searchcontainer-searchIcon {
   height: 100% !important;
-  margin: 0 10px;
+  margin: 0 20px;
 }
 
 .startpage__searchcontainer-searchInput {
   border: none;
   border-radius: 4px;
   outline: none;
+  background-color: var(--el-color);
+  color: var(--font-color);
 }

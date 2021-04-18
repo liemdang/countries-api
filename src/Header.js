@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { IoMoonOutline, IoMoon } from 'react-icons/io5'
 import "./Header.css"
+import "./App.css"
 import { Link } from "react-router-dom"
-
+import { FiSun } from "react-icons/fi"
 
 const Header = () => {
     const [darkMode, setDarkMode] = useState(false)
     function changeTheme() {
         setDarkMode(darkMode === false ? true : false)
+        document.body.classList.toggle("dark-theme");
     }
-    const modeIcon = darkMode ? <IoMoonOutline /> : <IoMoon />
+    const modeIcon = darkMode ? <FiSun /> : <IoMoonOutline />
     const modeText = darkMode ? "Light" : "Dark"
     return (
         <div className="header">

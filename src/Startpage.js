@@ -3,8 +3,8 @@ import axios from "axios"
 import Card from "./Card"
 import "./Startpage.css"
 import { AiOutlineSearch } from 'react-icons/ai'
+
 const Overview = () => {
-    const [regionSelected, setRegionSelected] = useState()
     const [data, setData] = useState([])
     const [regionCountries, setRegionsCountries] = useState([])
     const [searchedCountries, setSearchedCountries] = useState([])
@@ -46,8 +46,8 @@ const Overview = () => {
                 setRegionsCountries([])
             } 
         }
-           let countries
-        // const countries = regionCountries.length !== 0 ? regionCountries : data
+        let countries
+
        if(regionCountries.length > 0 && inputEmpty === false) {
             countries = searchedCountries
            
@@ -65,7 +65,7 @@ const Overview = () => {
                 <div className="startpage__searchcontainer">
                     <div className="startpage__searchcontainer-searchbar">
                         <AiOutlineSearch className="startpage__searchcontainer-searchIcon"/>
-                        <input onChange={searchCountry} type="text" className="startpage__searchcontainer-searchInput" placeholder="Seach for a country"></input>
+                        <input onChange={searchCountry} type="text" className="startpage__searchcontainer-searchInput" placeholder="Seach for a country..."></input>
                     </div>
                     
                     <select className="startpage__searchcontainer-filter" name="region"  onChange={test}>
