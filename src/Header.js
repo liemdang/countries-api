@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IoMoonOutline, IoMoon } from 'react-icons/io5'
+import { IoMoonOutline } from 'react-icons/io5'
 import "./Header.css"
 import "./App.css"
 import { Link } from "react-router-dom"

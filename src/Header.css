@@ -22,3 +22,13 @@
   margin-top: 2px;
   margin-right: 5px;
 }
+
+@media only screen and (max-width: 600px) {
+  .header__brand {
+    margin-left: 20px;
+    font-size: 12px;
+  }
+  .header__theme {
+    margin: auto 20px auto auto;
+  }
+}

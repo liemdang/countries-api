@@ -10,9 +10,6 @@ import Header from "./Header"
 function App() {
   return (
     <div className="App">
-      {/* <List /> */}
-        {/* <Startpage /> */}
-      {/* <h1>Test</h1> */}
       <Router>
         <Header />
       

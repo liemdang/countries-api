@@ -1,7 +1,7 @@
 :root {
   --font-color: hsl(200, 15%, 8%);
   --bg-color: hsl(0, 0%, 98%);
-  --el-color: hsl(0, 0%, 98%);
+  --el-color: hsl(0, 0%, 100%);
   --shadow-color: lightgray;
 }
 

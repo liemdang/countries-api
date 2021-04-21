@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from "axios"
 import Card from "./Card"
 import "./Startpage.css"
@@ -7,69 +7,81 @@ import { AiOutlineSearch } from 'react-icons/ai'
 const Overview = () => {
     const [data, setData] = useState([])
     const [regionCountries, setRegionsCountries] = useState([])
+    const [regionSelected, setRegionSelected] = useState(false)
     const [searchedCountries, setSearchedCountries] = useState([])
-    const [inputEmpty, setInputEmpty] = useState(true)
+    const inputEl = useRef(null)
+    const filterEl = useRef(null)
+    const searchInput = inputEl.current && inputEl.current.value
+
         useEffect(async () => {
             const result = await axios(
                 "https://restcountries.eu/rest/v2/all"
             )
             setData(result.data)
+            
         }, [data])
 
         function searchCountry(e) {
-            if(e.target.value !== "") {
-                setInputEmpty(false)
-            } else {
-                setInputEmpty(true)
-            }
-            
-            console.log(...regionCountries)
+            console.log(inputEl.current.value)
             if(regionCountries.length > 0) {
-                setSearchedCountries(regionCountries.filter((country) => country.name.toLowerCase().includes(e.target.value.toLowerCase())) )
+                setSearchedCountries(regionCountries.filter((country) => country.name.toLowerCase().includes(e.target.value.toLowerCase())))     
             } 
             else {
-                setSearchedCountries(data.filter((country) => country.name.toLowerCase().includes(e.target.value.toLowerCase())) )
+                setSearchedCountries(data.filter((country) => country.name.toLowerCase().includes(e.target.value.toLowerCase())))
             }
-            
         }
-
-        function test(e) {
-            console.log(e.target.value)
+        function searchFilter(land) {
+           if(filterEl.current.value === land.region && land.name.toLowerCase().includes(searchInput.toLowerCase())) {
+               return land
+           }
+        }
+        
+        function filterRegion(e) {
             if(e.target.value === "Africa"
              || e.target.value === "Americas"
              || e.target.value === "Asia"
              || e.target.value === "Europe"
              || e.target.value === "Oceania"
             ){
-                setRegionsCountries(countries.filter((country) => e.target.value === country.region ))
+                setRegionSelected(true)
+                if(searchInput !== "") {
+                    countries = data
+                    setSearchedCountries(countries.filter(searchFilter))
+                } else {
+                    countries = data
+                    setRegionsCountries(countries.filter((country) => e.target.value === country.region))   
+                }
+                 
             } else {
+                setRegionSelected(false)
+                if( searchInput !== "" ) {
+                    countries = data
+                    setSearchedCountries(data.filter((country) => country.name.toLowerCase().includes(searchInput.toLowerCase())))
+                }
                 setRegionsCountries([])
             } 
         }
-        let countries
 
-       if(regionCountries.length > 0 && inputEmpty === false) {
+        let countries = data
+        if( searchInput !== "") {
             countries = searchedCountries
-           
-       } else if(regionCountries.length > 0) {
-           
-           countries = regionCountries
-       }  else if(inputEmpty === false && regionCountries.length === 0) {
-           countries = searchedCountries
-       } else {
-           countries = data
-       }
+        } else if( regionSelected ) {
+            countries = regionCountries
+        } else {       
+            countries = data
+        }
+  
         return (
             <div className="all">
             <div className="startpage">   
                 <div className="startpage__searchcontainer">
                     <div className="startpage__searchcontainer-searchbar">
                         <AiOutlineSearch className="startpage__searchcontainer-searchIcon"/>
-                        <input onChange={searchCountry} type="text" className="startpage__searchcontainer-searchInput" placeholder="Seach for a country..."></input>
+                        <input ref={inputEl} onChange={searchCountry} type="text" className="startpage__searchcontainer-searchInput" placeholder="Seach for a country..."></input>
                     </div>
                     
-                    <select className="startpage__searchcontainer-filter" name="region"  onChange={test}>
-                    <option className="liem" value="">All</option>
+                    <select ref={filterEl} className="startpage__searchcontainer-filter" name="region"  onChange={filterRegion}>
+                    <option className="liem" value="All">All</option>
                     <option value="Africa">Africa</option>
                     <option value="Americas">America</option>
                     <option value="Asia">Asia</option>

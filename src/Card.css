@@ -23,6 +23,7 @@
 
 .card__shortInfo {
   margin-left: 20px;
+  line-height: 1.5rem;
 }
 .card__shortInfo > h3 {
   margin: 10px 0;
