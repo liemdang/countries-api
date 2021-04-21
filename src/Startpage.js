@@ -18,11 +18,9 @@ const Overview = () => {
                 "https://restcountries.eu/rest/v2/all"
             )
             setData(result.data)
-            
         }, [data])
 
         function searchCountry(e) {
-            console.log(inputEl.current.value)
             if(regionCountries.length > 0) {
                 setSearchedCountries(regionCountries.filter((country) => country.name.toLowerCase().includes(e.target.value.toLowerCase())))     
             } 

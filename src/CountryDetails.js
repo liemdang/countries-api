@@ -15,9 +15,15 @@ const CountryDetails = (props) => {
     }, [country])
     
     function mapLanguages(lang) {
-        return lang.name + ", "
+        // console.log(lang)
+        let newArray = []
+        newArray.push(lang.name + " ")
+        console.log(newArray)
+        return newArray
     }
- 
+    function myFunction() {
+        console.log("1")
+    }
     
     return (
         <div>
@@ -57,7 +63,11 @@ const CountryDetails = (props) => {
                             <span className="countryDetails__description-criteria">Currencies: </span>{country.currencies && country.currencies[0].name}
                         </p>
                         <p className="countryDetails__description-info">
-                            <span className="countryDetails__description-criteria">Languages: </span>{country.languages && country.languages.map(mapLanguages)}
+                            <span className="countryDetails__description-criteria">Languages: </span>{country.languages && country.languages.map((language) => {
+                                return language.name;
+                            })
+                            .join(" ")
+                            .replace(/\s/g, ", ")}
                         </p>
                     </div>
                 </div>
