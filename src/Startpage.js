@@ -29,24 +29,25 @@ const Overview = () => {
         }, [data])
 
         function searchCountry(e) {
+            countries = data
             if(regionSelected) {
-                countries = data
-                if(searchInput !== "") {
-                    countries = data
-                    setSearchedCountries(data.filter(searchFilter))
+                if(inputEl.current.value !== "") {
+                    // countries = data
+                    setSearchedCountries(countries.filter(searchFilter))
                 } else {
                     countries = data
-                    setRegionsCountries(data.filter((country) => filterEl.current.value === country.region))
+                    setRegionsCountries(countries.filter((country) => filterEl.current.value === country.region))
                 }
                 
             } 
             else {
-                countries = data
-                setSearchedCountries(countries.filter((country) => country.name.toLowerCase().includes(searchInput.toLowerCase())))
+                console.log(inputEl.current.value)
+                // countries = data
+                setSearchedCountries(countries.filter((country) => country.name.toLowerCase().includes(inputEl.current.value.toLowerCase())))
             }
         }
         function searchFilter(land) {
-           if(filterEl.current.value === land.region && land.name.toLowerCase().includes(searchInput.toLowerCase())) {
+           if(filterEl.current.value === land.region && land.name.toLowerCase().includes(inputEl.current.value.toLowerCase())) {
                return land
            }
         }
@@ -59,7 +60,7 @@ const Overview = () => {
              || e.target.value === "Oceania"
             ){
                 setRegionSelected(true)
-                if(searchInput !== "") {
+                if(inputEl.current.value !== "") {
                     countries = data
                     setSearchedCountries(countries.filter(searchFilter))
                 } else {
@@ -69,20 +70,20 @@ const Overview = () => {
                  
             } else {
                 setRegionSelected(false)
-                if(searchInput !== "") {
+                if(inputEl.current.value !== "") {
                     countries = data
-                    setSearchedCountries(data.filter((country) => country.name.toLowerCase().includes(searchInput.toLowerCase())))
+                    setSearchedCountries(data.filter((country) => country.name.toLowerCase().includes(inputEl.current.value.toLowerCase())))
                 }
                 setRegionsCountries([])
             } 
         }
 
-        let countries = data
+        let countries 
         if( searchInput !== "") {
             countries = searchedCountries
-        } else if(regionSelected && searchInput !== "") {
+        } else if(regionSelected && inputEl.current.value !== "") {
             countries = searchedCountries
-        } else if(regionSelected && searchInput === "") {
+        } else if(regionSelected && inputEl.current.value === "") {
             countries = regionCountries
         } else {       
             countries = data
