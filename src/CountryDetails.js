@@ -3,32 +3,31 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 import "./CountryDetails.css"
 import { IoIosArrowRoundBack } from "react-icons/io"
+import { css } from "@emotion/core"
+import MoonLoader from "react-spinners/MoonLoader"
+
+const override = css`
+display: block;
+position: fixed;
+top: 45%;
+left: 50%;
+`; 
 
 const CountryDetails = (props) => {
     const [country, setCountry] = useState([])
+    const [loading, setLoading] = useState(true)
     
     useEffect(async () => {
         const result = await axios(
             `https://restcountries.eu/rest/v2/name/${props.match.params.name}?fullText=true`
-        )
+        ).then(setLoading(false))
         setCountry(result.data[0])
     }, [country])
-    
-    function mapLanguages(lang) {
-        // console.log(lang)
-        let newArray = []
-        newArray.push(lang.name + " ")
-        console.log(newArray)
-        return newArray
-    }
-    function myFunction() {
-        console.log("1")
-    }
     
     return (
         <div>
         
-        {country &&
+        {loading ? <MoonLoader loading={loading} css={override}/> :
         <div className="countryDetails__container">
             <Link to="/" className="link-button">
             <button><IoIosArrowRoundBack className="btn-arrow"/><p>Back</p></button> 
