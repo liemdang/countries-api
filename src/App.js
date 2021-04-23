@@ -1,7 +1,5 @@
 
 import './App.css';
-// import List from "components/List"
-// import List from "./components/List";
 import Startpage from "./Startpage"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import CountryDetails from "./CountryDetails"

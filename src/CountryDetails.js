@@ -17,12 +17,15 @@ const CountryDetails = (props) => {
     const [country, setCountry] = useState([])
     const [loading, setLoading] = useState(true)
     
-    useEffect(async () => {
-        const result = await axios(
-            `https://restcountries.eu/rest/v2/name/${props.match.params.name}?fullText=true`
-        ).then(setLoading(false))
-        setCountry(result.data[0])
-    }, [country])
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios(
+                `https://restcountries.eu/rest/v2/name/${props.match.params.name}?fullText=true`
+            ).then(setLoading(false))
+            setCountry(result.data[0])
+        }
+        fetchData();
+    }, [country, props.match.params.name])
     
     return (
         <div>

@@ -21,11 +21,15 @@ const Overview = () => {
     const filterEl = useRef(null)
     const searchInput = inputEl.current && inputEl.current.value
     let [loading, setLoading] = useState(true)
-        useEffect(async () => {
-            const result = await axios(
-                "https://restcountries.eu/rest/v2/all"
-            ).then(setLoading(false))
-            setData(result.data)
+    
+        useEffect(() => {
+            const fetchData = async () => {
+                const result = await axios(
+                    "https://restcountries.eu/rest/v2/all"
+                ).then(setLoading(false))
+                setData(result.data)
+            }
+            fetchData()
         }, [data])
 
         function searchCountry(e) {
