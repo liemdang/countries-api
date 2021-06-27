@@ -18,7 +18,7 @@ const CountryDetails = (props) => {
     const [loading, setLoading] = useState(true)
     const [borderCountries, setBorderCountries] = useState([])
     const [borderCountryNames, setBorderCountryNames] = useState([])
-    let borderCountriesResult = []
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,8 +32,9 @@ const CountryDetails = (props) => {
     }, [country, props.match.params.name])
        
     useEffect(() => {
-        const nextCountries = async() => {
+        const getBorderCountries = async() => {
             if(borderCountries !== undefined) {
+                let borderCountriesResult = []
                 if(borderCountries.length === 0) {
                     setLoading(false)
                 }
@@ -45,7 +46,7 @@ const CountryDetails = (props) => {
             } 
         }
        
-       nextCountries()
+        getBorderCountries()
     }, [borderCountries, borderCountryNames])
 
     return (
