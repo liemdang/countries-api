@@ -99,15 +99,12 @@ const CountryDetails = (props) => {
                 </div>
                 {borderCountryNames.length > 0 ?
                 (<div className="countryDetails__description-info countryDetails__bCountries">
-                             <p className="countryDetails__description-criteria bCountries">Border Countries: </p>
-                             <div>
-                            {borderCountryNames.map(country => {
-                                return <button key={country} className="countryDetails__borderCountries">{country}</button>
-                            })}
-                            </div>
-                            
+                    <p className="countryDetails__description-criteria bCountries">Border Countries: </p>
+                        {borderCountryNames.map(country => {
+                            return <button key={country} className="countryDetails__borderCountries">{country}</button>
+                        })}
                     </div>) : null}
-            </div>
+                </div>
 
         </div>
         </div>
