@@ -16,24 +16,44 @@ left: 50%;
 const CountryDetails = (props) => {
     const [country, setCountry] = useState([])
     const [loading, setLoading] = useState(true)
-    
+    const [borderCountries, setBorderCountries] = useState([])
+    const [borderCountryNames, setBorderCountryNames] = useState([])
+    let borderCountriesResult = []
+
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios(
+            const result = await axios.get(
                 `https://restcountries.eu/rest/v2/name/${props.match.params.name}?fullText=true`
-            ).then(setLoading(false))
+            )
             setCountry(result.data[0])
+            setBorderCountries(country.borders) 
         }
-        fetchData();
+        fetchData()
     }, [country, props.match.params.name])
-    
+       
+    useEffect(() => {
+        const nextCountries = async() => {
+            if(borderCountries !== undefined) {
+                if(borderCountries.length === 0) {
+                    setLoading(false)
+                }
+                for( let i = 0; i < borderCountries.length; i++ ) {
+                    var result = await axios.get(`https://restcountries.eu/rest/v2/alpha/${borderCountries[i]}`)
+                    .then(result !== undefined ? borderCountriesResult.push(result.data.name) : null)
+                }
+                setBorderCountryNames(borderCountriesResult) 
+            } 
+        }
+       
+       nextCountries()
+    }, [borderCountries, borderCountryNames])
+
     return (
         <div>
-        
         {loading ? <MoonLoader loading={loading} css={override}/> :
         <div className="countryDetails__container">
             <Link to="/" className="link-button">
-            <button><IoIosArrowRoundBack className="btn-arrow"/><p>Back</p></button> 
+            <button className="btn"><IoIosArrowRoundBack className="btn-arrow"/><p>Back</p></button> 
         </Link>
         <div className="countryDetails">
             <img className="countryDetails__flag" src={country.flag} alt={country.name} />
@@ -71,8 +91,18 @@ const CountryDetails = (props) => {
                             .join(" ")
                             .replace(/\s/g, ", ")}
                         </p>
+                        
                     </div>
+                    
                 </div>
+                {borderCountryNames.length > 0 ?
+                (<span className="countryDetails__description-info">
+                             <p className="countryDetails__description-criteria">Border Countries: </p>
+                            {borderCountryNames.map(country => {
+                                return <button key={country} className="countryDetails__borderCountries">{country}</button>
+                            })}
+                            
+                    </span>) : null}
             </div>
 
         </div>

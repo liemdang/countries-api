@@ -12,7 +12,7 @@
   /* margin: 0 auto; */
 }
 .countryDetails__flag {
-  width: 400px;
+  max-width: 400px;
   height: 300px;
   object-fit: contain;
   margin: 0 auto;
@@ -37,7 +37,18 @@
 .countryDetails__description-column2 {
   margin-left: 50px;
 }
-button {
+.countryDetails__borderCountries {
+  background-color: var(--el-color);
+  color: var(--font-color);
+  box-shadow: 3px 3px 3px var(--shadow-color);
+  min-width: 70px;
+  /* min-width: 40px; */
+  border: none;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 0 10px;
+}
+.btn {
   height: 40px;
   width: 120px;
   display: flex;
@@ -50,7 +61,7 @@ button {
   margin: 50px auto 50px 50px;
 }
 
-button:hover {
+.btn:hover {
   cursor: pointer;
 }
 .btn-content {
@@ -61,7 +72,7 @@ button:hover {
   margin-top: 7px;
   margin-right: 5px;
 }
-button > p {
+.btn > p {
   margin: auto 0;
   text-decoration: none !important;
 }
@@ -90,7 +101,7 @@ button > p {
   .countryDetails__flag {
     width: 100%;
   }
-  button {
+  .btn {
     margin: 20px 0 20px 0;
   }
   .countryDetails__description {
