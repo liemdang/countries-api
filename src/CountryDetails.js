@@ -54,15 +54,14 @@ const CountryDetails = (props) => {
         {loading ? <MoonLoader loading={loading} css={override}/> :
         <div className="countryDetails__container">
             <Link to="/" className="link-button">
-            <button className="btn"><IoIosArrowRoundBack className="btn-arrow"/><p>Back</p></button> 
-        </Link>
+                <button className="btn"><IoIosArrowRoundBack className="btn-arrow"/><p>Back</p></button> 
+            </Link>
         <div className="countryDetails">
             <img className="countryDetails__flag" src={country.flag} alt={country.name} />
             <div className="countryDetails__description">
-                
+            <h2 className="countryDetails__description-name">{country.name}</h2>
                 <div className="countryDetails__description-container">
                     <div>
-                    <h2 className="countryDetails__description-name">{country.name}</h2>
                         <p className="countryDetails__description-info">
                             <span className="countryDetails__description-criteria">Native Name:&nbsp; </span> {country.nativeName}
                         </p>
@@ -103,6 +102,7 @@ const CountryDetails = (props) => {
                         {borderCountryNames.map(country => {
                             return <button key={country} className="countryDetails__borderCountries">{country}</button>
                         })}
+                            
                     </div>) : null}
                 </div>
 
