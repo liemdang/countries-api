@@ -43,9 +43,9 @@ const CountryDetails = (props) => {
                     .catch((error) => {
                         console.error('Error:', error);
                       })
-                    .finally(setLoading(false))
                 }
                 setBorderCountryNames(borderCountriesResult) 
+                setLoading(false)
             } 
         }
        

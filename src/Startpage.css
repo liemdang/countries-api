@@ -24,6 +24,7 @@
   border-radius: 4px;
   padding-left: 30px;
   height: 50px;
+  cursor: pointer;
 }
 
 .overview {
@@ -52,6 +53,7 @@
   outline: none;
   background-color: var(--el-color);
   color: var(--font-color);
+  width: 100%;
 }
 
 @media only screen and (max-width: 900px) {

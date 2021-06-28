@@ -32,11 +32,10 @@ const Overview = () => {
             fetchData()
         }, [data])
 
-        function searchCountry(e) {
+        function searchCountry() {
             countries = data
             if(regionSelected) {
                 if(inputEl.current.value !== "") {
-                    // countries = data
                     setSearchedCountries(countries.filter(searchFilter))
                 } else {
                     countries = data
@@ -45,8 +44,6 @@ const Overview = () => {
                 
             } 
             else {
-                console.log(inputEl.current.value)
-                // countries = data
                 setSearchedCountries(countries.filter((country) => country.name.toLowerCase().includes(inputEl.current.value.toLowerCase())))
             }
         }
@@ -63,19 +60,17 @@ const Overview = () => {
              || e.target.value === "Europe"
              || e.target.value === "Oceania"
             ){
+                countries = data
                 setRegionSelected(true)
                 if(inputEl.current.value !== "") {
-                    countries = data
                     setSearchedCountries(countries.filter(searchFilter))
                 } else {
-                    countries = data
                     setRegionsCountries(countries.filter((country) => e.target.value === country.region))   
                 }
                  
             } else {
                 setRegionSelected(false)
                 if(inputEl.current.value !== "") {
-                    countries = data
                     setSearchedCountries(data.filter((country) => country.name.toLowerCase().includes(inputEl.current.value.toLowerCase())))
                 }
                 setRegionsCountries([])
@@ -104,7 +99,7 @@ const Overview = () => {
                     </div>
                     
                     <select ref={filterEl} className="startpage__searchcontainer-filter" name="region"  onChange={changeRegion}>
-                    <option className="liem" value="All">All</option>
+                    <option  value="All">All</option>
                     <option value="Africa">Africa</option>
                     <option value="Americas">America</option>
                     <option value="Asia">Asia</option>
