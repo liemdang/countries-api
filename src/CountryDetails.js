@@ -35,12 +35,15 @@ const CountryDetails = (props) => {
         const getBorderCountries = async() => {
             if(borderCountries !== undefined) {
                 let borderCountriesResult = []
-                if(borderCountries.length === 0) {
-                    setLoading(false)
-                }
+
                 for( let i = 0; i < borderCountries.length; i++ ) {
-                    var result = await axios.get(`https://restcountries.eu/rest/v2/alpha/${borderCountries[i]}`)
-                    .then(result !== undefined ? borderCountriesResult.push(result.data.name) : null)
+                    await fetch(`https://restcountries.eu/rest/v2/alpha/${borderCountries[i]}`)
+                    .then(response => response.json())
+                    .then(data => borderCountriesResult.push(data.name))
+                    .catch((error) => {
+                        console.error('Error:', error);
+                      })
+                    .finally(setLoading(false))
                 }
                 setBorderCountryNames(borderCountriesResult) 
             } 

@@ -114,6 +114,9 @@
   .countryDetails__description-container {
     flex-direction: column;
   }
+  .countryDetails__bCountries {
+    margin-bottom: 50px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
