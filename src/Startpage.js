@@ -95,10 +95,10 @@ const Overview = () => {
                 <div className="startpage__searchcontainer">
                     <div className="startpage__searchcontainer-searchbar">
                         <AiOutlineSearch className="startpage__searchcontainer-searchIcon"/>
-                        <input ref={inputEl} onChange={searchCountry} type="text" className="startpage__searchcontainer-searchInput" placeholder="Seach for a country..."></input>
+                        <input ref={inputEl} aria-label="searchIinput" onChange={searchCountry} type="text" className="startpage__searchcontainer-searchInput" placeholder="Seach for a country..."></input>
                     </div>
                     
-                    <select ref={filterEl} className="startpage__searchcontainer-filter" name="region"  onChange={changeRegion}>
+                    <select ref={filterEl} aria-label="filter-dropdown" className="startpage__searchcontainer-filter" a name="region"  onChange={changeRegion}>
                     <option  value="All">All</option>
                     <option value="Africa">Africa</option>
                     <option value="Americas">America</option>
